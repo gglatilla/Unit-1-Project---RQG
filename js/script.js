@@ -8,15 +8,33 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 
+/* 'The idea used to code intervalID was taken from MDN web docs.'
+   'intervalID causes the printQuote function to be called every 8 seconds.'
+   */
+const intervalID = setInterval (printQuote, 8000);
+
+/* RandomColors is a function that generates different colors.
+   The code for the the fuction was taken from 'Stack Overflow' and I have altered it slightly.
+*/
+function RandomColors() {
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+  let blue = Math.floor(Math.random() * 256);
+  let colors = 'rgb(' + red + ',' + green + ',' + blue + ')';
+  return colors;
+}
+
+
 /*** 
  * `quotes` array 
 ***/
+
 let quotes = [
   {
     quote: 'A wise man can learn more from his enemies than a fool from his friends.',
     source: 'Niki Lauda',
     citation: 'Rush',
-    year: '2013' ,
+    year: '2013',
     tag: 'Educational',
   },
   {
@@ -41,11 +59,11 @@ let quotes = [
     tag: 'Educational',
   },
   {
-    quote: "Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure. It is our light, not our darkness, that most frightens us. We ask ourselves, who am I to be brilliant, gorgeous, talented and fabulous? Actually, who are you not to be? You are a child of God. Your playing small doesn't serve the world. We were born to make manifest the glory of God that is within us. It's not just in some of us; it's in everyone. And as we let our own light shine, we unconsciously give other people permission to do the same. As we are liberated from our own fear, our presence automatically liberates others.",
-    source: 'Timo Cruz',
-    citation: 'Coach Carter',
-    year: '2005',
-    tag: 'Inspirational'
+    quote: "My mama always said life was like a box of chocolates, you never know what you gonna get",
+    source: 'Forrest Gump',
+    citation: 'Forrest Gump',
+    year: '1994',
+    tag: 'Educational'
   }
 ];
 console.log(quotes);
@@ -54,9 +72,11 @@ console.log(quotes);
 /***
  * `getRandomQuote` function
 ***/
+
+
 function getRandomQuote () {
-  const randomNumber = quotes[Math.floor(Math.random() * quotes.length)]
-  return randomNumber;
+    let randomNumber = quotes[Math.floor(Math.random() * quotes.length)]
+    return randomNumber;
 }
  
 console.log (getRandomQuote());
@@ -69,20 +89,20 @@ console.log (getRandomQuote());
 ***/
 function printQuote () {
     let myQuote = getRandomQuote();
-    let quoteDisplay = '<p class = "quote">' + quotes.quote + '</p>' /
-                       '<p class = "source">' + quotes.source ;
+    let quoteDisplay = '<p class = quote>' + quotes.quote + '</p>' 
+                       '<p class = source>' + quotes.source;
 
     if (myQuote.citation) {
-        quoteDisplay += '<span class = "citation">' + myQuote.citation + '</span>';
+        quoteDisplay += '<span class = citation>' + myQuote.citation + '</span>';
        };
 
     if (myQuote.year) {
-        quoteDisplay += '<span class = "year">' + myQuote.year + '</span>';
+        quoteDisplay += '<span class = year>' + myQuote.year + '</span>';
        };
 
     if (myQuote.tag) {   
-       quoteDisplay += '<span class = "tag">' + myQuote.tag + '</span>';
-       };
+        quoteDisplay += '<span class = tag>' + myQuote.tag + '</span>';
+        };
       
        quoteDisplay += '</p>'
 
@@ -97,24 +117,6 @@ function printQuote () {
 console.log(printQuote());
 
 printQuote();
-
-/* 'code for intervalID was taken from MDN web docs.'
-   'intervalID causes the printQuote function to be called every 8 seconds.'
-   */
-  
-
-const intervalID = setInterval (printQuote, 80000);
-
-function RandomColors() {
-  var red = Math.floor(Math.random() * 256);
-  var green = Math.floor(Math.random() * 256);
-  var blue = Math.floor(Math.random() * 256);
-  var colors = 'rgb(' + red + ',' + green + ',' + blue + ')';
-  return colors;
-}
-
-
- 
 
 
 /***

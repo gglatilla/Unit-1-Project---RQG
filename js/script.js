@@ -24,10 +24,10 @@ let quotes = [
     year: '1995',
   },
   {
-    quote: "Life is not the amount of breaths you take. It's the moments that take your breath away.",
-    source: 'Alex Hitchens',
-    citation: 'Hitch',
-    year: '2005',
+    quote: "Great men are not born great =, they grow great.",
+    source: 'Mario Puzo',
+    citation: 'The Godfather',
+    year: '1972',
   },
   {
     quote:"Nobody is gonna hit as hard as life, but it ain't how hard you can hit. It's how hard you can get hit and keep moving forward. It's how much you can take, and keep moving forward. That's how winning is done.",
@@ -49,7 +49,7 @@ console.log(quotes);
  * `getRandomQuote` function
 ***/
 function getRandomQuote () {
-  let randomNumber = quotes[Math.floor(Math.random() * quotes.length)]
+  const randomNumber = quotes[Math.floor(Math.random() * quotes.length)]
   return randomNumber;
 }
  
@@ -59,7 +59,25 @@ console.log (getRandomQuote);
 /***
  * `printQuote` function
 ***/
+function printQuote () {
+    let myQuote = getRandomQuote();
+    let quoteDisplay = '<p class = "quote">' + quotes.quote + '</p>' /
+                       '<p class = "source">' + quotes.source ;
 
+    if (myQuote.citation) {
+        quoteDisplay += '<span class = "citation">' + myQuote.citation + '</span>';
+       };
+
+    if (myQuote.year) {
+        quoteDisplay += '<span class = "year">' + myQuote.year + '</span>';
+       };
+
+       quoteDisplay += '</p>'
+       
+       document.getElementById('quote-box').innerHTML = quoteDisplay; 
+} 
+
+printQuote(); 
 
 
 /***
@@ -67,4 +85,4 @@ console.log (getRandomQuote);
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-//document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);

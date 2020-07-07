@@ -16,7 +16,7 @@ let quotes = [
     quote: 'A wise man can learn more from his enemies than a fool from his friends.',
     source: 'Niki Lauda',
     citation: 'Rush',
-    year: '2013',
+    year: '2013' ,
     tag: 'Educational',
   },
   {
@@ -81,7 +81,7 @@ function printQuote () {
        };
 
     if (myQuote.tag) {   
-       quoteDisplay += '<span class = "year">' + myQuote.year + '</span>';
+       quoteDisplay += '<span class = "tag">' + myQuote.tag + '</span>';
        };
       
        quoteDisplay += '</p>'
@@ -89,11 +89,30 @@ function printQuote () {
        
        document.getElementById('quote-box').innerHTML = quoteDisplay; 
 
+       let getRandomColors = RandomColors();
+        document.body.style.backgroundColor = getRandomColors;
+
       } 
 
 console.log(printQuote());
 
 printQuote();
+
+/* 'code for intervalID was taken from MDN web docs.'
+   'intervalID causes the printQuote function to be called every 8 seconds.'
+   */
+  
+
+const intervalID = setInterval (printQuote, 80000);
+
+function RandomColors() {
+  var red = Math.floor(Math.random() * 256);
+  var green = Math.floor(Math.random() * 256);
+  var blue = Math.floor(Math.random() * 256);
+  var colors = 'rgb(' + red + ',' + green + ',' + blue + ')';
+  return colors;
+}
+
 
  
 

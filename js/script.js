@@ -13,7 +13,7 @@ project 1 - A Random Quote Generator
    */
 const intervalID = setInterval (printQuote, 8000);
 
-/* RandomColors is a function that generates different colors.
+/* RandomColors is a function that generates different colors randomly.
    The code for the the fuction was taken from 'Stack Overflow' and I have altered it slightly.
 */
 function RandomColors() {
@@ -26,7 +26,13 @@ function RandomColors() {
 
 
 /*** 
- * `quotes` array 
+ * `quotes` is an array containing 5 objects. 
+ * Each object is made up of 5 different keys: 'quote', 'source', 'citation', 'year' and 'tag'. 
+ * quote: quote from the movie. 
+ * source: Who said the quote. 
+ * citation: Which movie the quote is from.
+ * year: Which year the movie was released. 
+ * tag: type of quote. 
 ***/
 
 let quotes = [
@@ -71,6 +77,8 @@ console.log(quotes);
 
 /***
  * `getRandomQuote` function
+ * randomNumber generates a random number  within the limits of the length of the `quote` array. 
+ * `0 - 4 `
 ***/
 
 
@@ -85,12 +93,17 @@ console.log (getRandomQuote());
 
 
 /***
- * `printQuote` function
-***/
+ * `printQuote` function 
+ * printQuote function calls the getRandomQuote function 
+ * myQuote stores the value of the getRandomQuote function. 
+ * quoteDisplay builds a string to be displayed in the browser.
+ * In the browser it displays the quote, the source, the citation, the year and the tag. 
+ * 
+***/ 
 function printQuote () {
     let myQuote = getRandomQuote();
-    let quoteDisplay = '<p class = quote>' + quotes.quote + '</p>' 
-                       '<p class = source>' + quotes.source;
+    let quoteDisplay = '<p class = quote>' + myQuote.quote + '</p>';
+        quoteDisplay += '<p class = source>' + myQuote.source;
 
     if (myQuote.citation) {
         quoteDisplay += '<span class = citation>' + myQuote.citation + '</span>';
@@ -102,7 +115,7 @@ function printQuote () {
 
     if (myQuote.tag) {   
         quoteDisplay += '<span class = tag>' + myQuote.tag + '</span>';
-        };
+       };
       
        quoteDisplay += '</p>'
 
